@@ -6,6 +6,9 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener{
 
+    static final int screenWidth = 600;
+    static final int screenHeight = 600;
+
     GamePanel() {
 
     }
