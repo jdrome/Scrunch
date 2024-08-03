@@ -8,6 +8,8 @@ public class GamePanel extends JPanel implements ActionListener{
 
     static final int screenWidth = 600;
     static final int screenHeight = 600;
+    static final int unitSize = 25; // Size of items in the game.
+    static final int gameUnits = (screenWidth * screenHeight / unitSize); // Calculates how many items we can have in our game.
 
     GamePanel() {
 
