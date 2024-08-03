@@ -32,7 +32,10 @@ public class GamePanel extends JPanel implements ActionListener{
     }
 
     public void startGame() {
-
+        newApple();
+        running = false;
+        timer = new Timer(delay, this); // Timer has two parameters, "delay" and "actionListener". We put "this" as the value for the actionListener argument because we are implementing the actionListener interface. 
+        timer.start();
     }
     
     public void paintComponent(Graphics g) {
@@ -44,7 +47,7 @@ public class GamePanel extends JPanel implements ActionListener{
     }
 
     public void newApple() {
-        
+
     }
 
     public void move() {
