@@ -16,7 +16,7 @@ public class GamePanel extends JPanel implements ActionListener{
     int bodyParts = 6; // Initial length of the snake (i.e. how many "body parts" you start with).
     int applesEaten; // This is the count of apples eaten. Initialized at 0.
     int appleX; // Random X coordinate of the apple that the snake eats. Becomes random every time the snake eats an apple.
-    int appley; // Random Y coordinate of the apple that the snake eats. Becomes random every time the snake eats an apple.
+    int appleY; // Random Y coordinate of the apple that the snake eats. Becomes random every time the snake eats an apple.
     char direction = 'R'; // Snake begins by going right. R = right; L = left; U = up; D = down.
     boolean running = false;
     Timer timer;
