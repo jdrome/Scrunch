@@ -56,6 +56,17 @@ public class GamePanel extends JPanel implements ActionListener{
         g.setColor(new Color(0, 255, 0));
         g.fillOval(appleX, appleY, unitSize, unitSize);
 
+        for (int i = 0; i < bodyParts; i++) {
+            
+            if(i == 0) {
+                g.setColor(new Color(254, 43, 143));
+                g.fillRect(x[i], y[i], unitSize, unitSize);
+            }
+            else {
+                g.setColor(new Color(255, 22, 104));
+                g.fillRect(x[i], y[i], unitSize, unitSize);
+            }
+        }
     }
 
     public void newApple() {
