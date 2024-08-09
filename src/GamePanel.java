@@ -52,9 +52,16 @@ public class GamePanel extends JPanel implements ActionListener{
             g.drawLine(0, i * unitSize, screenWidth, i * unitSize); // Vertical lines
         }
 
+        // Draws apple on game panel
+        g.setColor(new Color(0, 255, 0));
+        g.fillOval(appleX, appleY, unitSize, unitSize);
+
     }
 
     public void newApple() {
+
+        appleX = random.nextInt((int)(screenWidth / unitSize)) * unitSize;
+        appleY = random.nextInt((int)(screenHeight / unitSize)) * unitSize;
 
     }
 
