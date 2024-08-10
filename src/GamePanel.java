@@ -56,11 +56,14 @@ public class GamePanel extends JPanel implements ActionListener{
         g.setColor(new Color(0, 255, 0));
         g.fillOval(appleX, appleY, unitSize, unitSize);
 
+        // Draw snake
         for (int i = 0; i < bodyParts; i++) {
+            // Draw head of snake
             if(i == 0) {
                 g.setColor(new Color(254, 43, 143));
                 g.fillRect(x[i], y[i], unitSize, unitSize);
             }
+            // Draw body of snake
             else {
                 g.setColor(new Color(255, 22, 104));
                 g.fillRect(x[i], y[i], unitSize, unitSize);
@@ -152,5 +155,3 @@ public class GamePanel extends JPanel implements ActionListener{
         }
     }
 }
-
-// 30:36
