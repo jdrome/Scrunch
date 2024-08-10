@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements ActionListener{
 
     public void startGame() {
         newApple();
-        running = false;
+        running = true;
         timer = new Timer(delay, this); // Timer has two parameters, "delay" and "actionListener". We put "this" as the value for the actionListener argument because we are implementing the actionListener interface. 
         timer.start();
     }
@@ -57,7 +57,6 @@ public class GamePanel extends JPanel implements ActionListener{
         g.fillOval(appleX, appleY, unitSize, unitSize);
 
         for (int i = 0; i < bodyParts; i++) {
-            
             if(i == 0) {
                 g.setColor(new Color(254, 43, 143));
                 g.fillRect(x[i], y[i], unitSize, unitSize);
@@ -103,7 +102,32 @@ public class GamePanel extends JPanel implements ActionListener{
     }
 
     public void checkCollisions() {
+        for(int i = bodyParts; i > 0; i--) {
+            // If head collides with body
+            if((x[0] == x[i]) && (y[0] == y[i])) {
+                running = false;
+            }
+            // If head collides with left border
+            if(x[0] < 0) {
+                running = false;
+            }
+            // if head collides with right border
+            if(x[0] > screenWidth) {
+                running = false;
+            }
+            // if head collides with top border
+            if(y[0] < 0) {
+                running = false;
+            }
+            // if head collides with bottom border
+            if(y[0] > screenHeight) {
+                running = false;
+            }
 
+            if(!running) {
+                timer.stop();
+            }
+        }
     }
 
     public void gameOver(Graphics g) {
@@ -112,7 +136,12 @@ public class GamePanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Fill in Method here
+        if(running) {
+            move();
+            checkApple();
+            checkCollisions();
+        }
+        repaint();
     }
 
     public class MyKeyAdapter extends KeyAdapter {
@@ -123,3 +152,5 @@ public class GamePanel extends JPanel implements ActionListener{
         }
     }
 }
+
+// 30:36
