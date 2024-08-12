@@ -156,8 +156,14 @@ public class GamePanel extends JPanel implements ActionListener{
         // Game Over Text
         g.setColor(Color.red);
         g.setFont(new Font("Noteworthy", Font.BOLD, 75));
-        FontMetrics metrics = getFontMetrics(g.getFont()); // Used to center text
-        g.drawString("Game Over", (screenWidth - metrics.stringWidth("Game Over")) / 2, screenHeight / 2); // Puts "Game Over" in center of screen
+        FontMetrics metricsGameOver = getFontMetrics(g.getFont()); // Used to center text
+        g.drawString("Game Over", (screenWidth - metricsGameOver.stringWidth("Game Over")) / 2, screenHeight / 2); // Puts "Game Over" in center of screen
+
+        // Score
+        g.setColor(Color.red);
+        g.setFont(new Font("Noteworthy", Font.BOLD, 40));
+        FontMetrics metricsScore = getFontMetrics(g.getFont()); // Used to center text
+        g.drawString("Score: " + applesEaten, (screenWidth - metricsScore.stringWidth("Score" + applesEaten)) / 2, g.getFont().getSize()); // Puts "Game Over" in center of screen
 
     }
 
