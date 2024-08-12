@@ -45,29 +45,34 @@ public class GamePanel extends JPanel implements ActionListener{
 
     public void draw(Graphics g) {
 
-        // Draw grid lines in game panel.
-        for(int i = 0; i < screenHeight / unitSize; i++) {
-            g.setColor(new Color(60, 60, 60, 255));
-            g.drawLine(i * unitSize, 0, i * unitSize, screenHeight); // Horizontal lines
-            g.drawLine(0, i * unitSize, screenWidth, i * unitSize); // Vertical lines
+        if(running) {
+            // Draw grid lines in game panel.
+            for(int i = 0; i < screenHeight / unitSize; i++) {
+                g.setColor(new Color(60, 60, 60, 255));
+                g.drawLine(i * unitSize, 0, i * unitSize, screenHeight); // Horizontal lines
+                g.drawLine(0, i * unitSize, screenWidth, i * unitSize); // Vertical lines
+            }
+
+            // Draws apple on game panel
+            g.setColor(new Color(0, 255, 0));
+            g.fillOval(appleX, appleY, unitSize, unitSize);
+
+            // Draw snake
+            for (int i = 0; i < bodyParts; i++) {
+                // Draw head of snake
+                if(i == 0) {
+                    g.setColor(new Color(254, 107, 143));
+                    g.fillRect(x[i], y[i], unitSize, unitSize);
+                }
+                // Draw body of snake
+                else {
+                    g.setColor(new Color(255, 22, 104));
+                    g.fillRect(x[i], y[i], unitSize, unitSize);
+                }
+            }
         }
-
-        // Draws apple on game panel
-        g.setColor(new Color(0, 255, 0));
-        g.fillOval(appleX, appleY, unitSize, unitSize);
-
-        // Draw snake
-        for (int i = 0; i < bodyParts; i++) {
-            // Draw head of snake
-            if(i == 0) {
-                g.setColor(new Color(254, 107, 143));
-                g.fillRect(x[i], y[i], unitSize, unitSize);
-            }
-            // Draw body of snake
-            else {
-                g.setColor(new Color(255, 22, 104));
-                g.fillRect(x[i], y[i], unitSize, unitSize);
-            }
+        else {
+            gameOver(g);
         }
     }
 
@@ -140,6 +145,12 @@ public class GamePanel extends JPanel implements ActionListener{
     }
 
     public void gameOver(Graphics g) {
+
+        // Game Over Text
+        g.setColor(Color.red);
+        g.setFont(new Font("Noteworthy", Font.BOLD, 75));
+        FontMetrics metrics = getFontMetrics(g.getFont()); // Used to center text
+        g.drawString("Game Over", (screenWidth - metrics.stringWidth("Game Over")) / 2, screenHeight / 2); // Puts "Game Over" in center of screen
 
     }
 
