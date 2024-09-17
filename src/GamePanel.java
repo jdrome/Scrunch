@@ -10,7 +10,7 @@ public class GamePanel extends JPanel implements ActionListener{
     static final int screenHeight = 600;
     static final int unitSize = 25; // Size of items in the game.
     static final int gameUnits = (screenWidth * screenHeight / unitSize); // Calculates how many items we can have in our game.
-    static final int delay = 75; // The higher the number, the slower the game.
+    static final int delay = 75; // The higher the number, the slower the game. Originally 75.
     final int x[] = new int[gameUnits]; // X coordinates (including head) of snake's body parts.
     final int y[] = new int [gameUnits]; // Y coordinates (including head) of snake's body parts.
     int bodyParts = 3; // Initial length of the snake (i.e. how many "body parts" you start with). Was 6, changed to 3. 
@@ -49,8 +49,8 @@ public class GamePanel extends JPanel implements ActionListener{
             // Draw grid lines in game panel.
             for(int i = 0; i < screenHeight / unitSize; i++) {
                 g.setColor(new Color(60, 60, 60, 255));
-                g.drawLine(i * unitSize, 0, i * unitSize, screenHeight); // Horizontal lines
-                g.drawLine(0, i * unitSize, screenWidth, i * unitSize); // Vertical lines
+                g.drawLine(i * unitSize, 0, i * unitSize, screenHeight); // Vertical lines
+                g.drawLine(0, i * unitSize, screenWidth, i * unitSize); // Horizontal lines
             }
 
             // Draws apple on game panel
