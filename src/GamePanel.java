@@ -49,8 +49,8 @@ public class GamePanel extends JPanel implements ActionListener{
             // Draw grid lines in game panel.
             for(int i = 0; i < screenHeight / unitSize; i++) {
                 g.setColor(new Color(60, 60, 60, 255));
-                g.drawLine(i * unitSize, 0, i * unitSize, screenHeight); // Horizontal lines
-                g.drawLine(0, i * unitSize, screenWidth, i * unitSize); // Vertical lines
+                g.drawLine(i * unitSize, 0, i * unitSize, screenHeight); // Vertical lines
+                g.drawLine(0, i * unitSize, screenWidth, i * unitSize); // Horizontal lines
             }
 
             // Draws apple on game panel
