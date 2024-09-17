@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements ActionListener{
     static final int delay = 75; // The higher the number, the slower the game.
     final int x[] = new int[gameUnits]; // X coordinates (including head) of snake's body parts.
     final int y[] = new int [gameUnits]; // Y coordinates (including head) of snake's body parts.
-    int bodyParts = 6; // Initial length of the snake (i.e. how many "body parts" you start with).
+    int bodyParts = 3; // Initial length of the snake (i.e. how many "body parts" you start with). Was 6, changed to 3. 
     int applesEaten; // This is the count of apples eaten. Initialized at 0.
     int appleX; // Random X coordinate of the apple that the snake eats. Becomes random every time the snake eats an apple.
     int appleY; // Random Y coordinate of the apple that the snake eats. Becomes random every time the snake eats an apple.
