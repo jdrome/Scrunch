@@ -10,16 +10,18 @@ public class GamePanel extends JPanel implements ActionListener{
     static final int screenHeight = 600;
     static final int unitSize = 25; // Size of items in the game.
     static final int gameUnits = (screenWidth * screenHeight / unitSize); // Calculates how many items we can have in our game.
-    static final int delay = 75; // The higher the number, the slower the game.
+    static final int delay = 75; // The higher the number, the slower the game. Originally 75.
+    static final int growthRate = 1880; // Controls snake's growth rate.
     final int x[] = new int[gameUnits]; // X coordinates (including head) of snake's body parts.
     final int y[] = new int [gameUnits]; // Y coordinates (including head) of snake's body parts.
-    int bodyParts = 6; // Initial length of the snake (i.e. how many "body parts" you start with).
+    int bodyParts = 3; // Initial length of the snake (i.e. how many "body parts" you start with). Was 6, changed to 3. 
     int applesEaten; // This is the count of apples eaten. Initialized at 0.
     int appleX; // Random X coordinate of the apple that the snake eats. Becomes random every time the snake eats an apple.
     int appleY; // Random Y coordinate of the apple that the snake eats. Becomes random every time the snake eats an apple.
     char direction = 'R'; // Snake begins by going right. R = right; L = left; U = up; D = down.
     boolean running = false;
     Timer timer;
+    Timer growthTimer; // Timer that makes the snake grow at consistent rate
     Random random;
 
     GamePanel() {
@@ -35,7 +37,9 @@ public class GamePanel extends JPanel implements ActionListener{
         newApple();
         running = true;
         timer = new Timer(delay, this); // Timer has two parameters, "delay" and "actionListener". We put "this" as the value for the actionListener argument because we are implementing the actionListener interface. 
+        growthTimer = new Timer(growthRate, new GrowthListener());
         timer.start();
+        growthTimer.start();
     }
     
     public void paintComponent(Graphics g) {
@@ -61,12 +65,12 @@ public class GamePanel extends JPanel implements ActionListener{
             for (int i = 0; i < bodyParts; i++) {
                 // Draw head of snake
                 if(i == 0) {
-                    g.setColor(new Color(254, 107, 143));
+                    g.setColor(new Color(0, 218, 255));
                     g.fillRect(x[i], y[i], unitSize, unitSize);
                 }
                 // Draw body of snake
                 else {
-                    g.setColor(new Color(255, 22, 104));
+                    g.setColor(new Color(0, 80, 255));
                     g.fillRect(x[i], y[i], unitSize, unitSize);
                 }
             }
@@ -115,7 +119,9 @@ public class GamePanel extends JPanel implements ActionListener{
     public void checkApple() {
 
         if((x[0] == appleX) && (y[0] == appleY)) {
-            bodyParts++;
+            if(bodyParts != 1){
+                bodyParts--;
+            }
             applesEaten++;
             newApple();
         }
@@ -133,7 +139,7 @@ public class GamePanel extends JPanel implements ActionListener{
                 running = false;
             }
             // if head collides with right border
-            if(x[0] > screenWidth) {
+            if(x[0] >= screenWidth) {
                 running = false;
             }
             // if head collides with top border
@@ -141,7 +147,7 @@ public class GamePanel extends JPanel implements ActionListener{
                 running = false;
             }
             // if head collides with bottom border
-            if(y[0] > screenHeight) {
+            if(y[0] >= screenHeight) {
                 running = false;
             }
 
@@ -203,6 +209,16 @@ public class GamePanel extends JPanel implements ActionListener{
                     }
                     break;
             }
+        }
+    }
+
+    public void growSnake() {
+        bodyParts++;
+    }
+
+    public class GrowthListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            growSnake();
         }
     }
 }
