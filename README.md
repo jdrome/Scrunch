@@ -52,9 +52,15 @@ To run this project, you'll need:
 
 ## Screenshots
 
-Include a few screenshots of your game here. For example:
-1. **Gameplay Screen**: (Insert screenshot of the game in action).
-2. **Game Over Screen**: (Insert screenshot of the Game Over screen).
+
+
+
+1. **Gameplay Screen**:
+   
+   <img width="300" alt="Game Screen Shot" src="https://github.com/user-attachments/assets/174a2a4c-49bb-45d7-a44a-bdc2c8fa4e6f">
+3. **Game Over Screen**:
+   
+   <img width="300" alt="Game Over Screen" src="https://github.com/user-attachments/assets/c615f6ea-c498-40ed-91f5-f50f7fdb8c70">
    
 ---
 
